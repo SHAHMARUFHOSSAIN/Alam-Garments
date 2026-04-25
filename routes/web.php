@@ -21,23 +21,16 @@ use App\Livewire\Privacy;
 
 /*
 |--------------------------------------------------------------------------
-| PUBLIC ROUTES (NO LOGIN REQUIRED)
+| PUBLIC ROUTES
 |--------------------------------------------------------------------------
 */
 
-
 Route::get('/', ShowHome::class)->name('home');
-
 Route::get('/about', ShowAboutSection::class)->name('about');
-
 Route::get('/mission', ShowMission::class)->name('mission');
-
 Route::get('/history', ShowHistory::class)->name('history');
-
 Route::get('/team', ShowTeam::class)->name('team');
-
 Route::get('/portfolio', Portfolio::class)->name('portfolio');
-
 Route::get('/showroom', ShowroomPage::class)->name('showroom');
 
 /*
@@ -47,9 +40,7 @@ Route::get('/showroom', ShowroomPage::class)->name('showroom');
 */
 
 Route::get('/careers', CareerPage::class)->name('careers');
-
 Route::get('/apply/{id}', JobApply::class)->name('job.apply');
-
 Route::get('/job/{id}', JobDetails::class)->name('job.details');
 
 /*
@@ -59,10 +50,16 @@ Route::get('/job/{id}', JobDetails::class)->name('job.details');
 */
 
 Route::get('/contact', ContactPage::class)->name('contact');
-
 Route::get('/concern/{slug}', ConcernPage::class)->name('concern.page');
 
+/*
+|--------------------------------------------------------------------------
+| LEGAL
+|--------------------------------------------------------------------------
+*/
+
 Route::get('/privacy', Privacy::class)->name('privacy');
+
 /*
 |--------------------------------------------------------------------------
 | AUTH ROUTES
@@ -71,24 +68,22 @@ Route::get('/privacy', Privacy::class)->name('privacy');
 
 Route::middleware(['auth'])->group(function () {
 
-    // HR + ADMIN + SUPERADMIN
+    // HR + ADMIN
     Route::middleware(['role:hr,admin'])->group(function () {
-        Route::get('/jobs/manage', JobManage::class);
-        Route::get('/careers/manage', CareerManage::class);
+        Route::get('/jobs/manage', JobManage::class)->name('jobs.manage');
+        Route::get('/careers/manage', CareerManage::class)->name('careers.manage');
     });
 
     // ADMIN + SUPERADMIN
     Route::middleware(['role:admin,superadmin'])->group(function () {
-        Route::get('/admin/dashboard', AdminDashboard::class);
+        Route::get('/admin/dashboard', AdminDashboard::class)->name('admin.dashboard');
     });
 
     // SUPERADMIN ONLY
     Route::middleware(['role:superadmin'])->group(function () {
         Route::get('/superadmin', function () {
-            return redirect('/admin');
-        });
+            return redirect('/admin/dashboard');
+        })->name('superadmin');
     });
 
 });
-
-
