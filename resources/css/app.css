@@ -1,0 +1,181 @@
+@import 'tailwindcss';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
+
+@theme {
+    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+        'Segoe UI Symbol', 'Noto Color Emoji';
+} 
+
+
+
+
+
+
+
+
+
+/* ================= MAP MOBILE FIX ================= */
+
+.map-wrapper {
+  width: 100%;
+}
+
+.map-card {
+  width: 100% !important;
+  max-width: 100% !important;
+  padding: 0 10px;
+}
+
+.bd-map-img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* optional: mobile better scaling */
+@media (max-width: 768px) {
+
+  .map-card {
+    width: 100% !important;
+  }
+
+  .bd-map-img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+}
+
+
+
+
+/* ================= HERO (FINAL STABLE FIX) ================= */
+
+.hero .carousel-item {
+  height: 85vh;
+  min-height: 500px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero .carousel-item img {
+  width: 100%;
+  height: 85vh;
+  object-fit: cover;
+  display: block;
+}
+
+/* overlay */
+.hero .carousel-item::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
+}
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 768px) {
+
+  .hero .carousel-item {
+    height: 60vh !important;
+  }
+
+  .hero .carousel-item img {
+    height: 60vh !important;
+    width: 100% !important;
+    object-fit: contain !important; /* FULL IMAGE */
+    background: #000;
+  }
+
+}
+
+
+
+
+
+
+
+/* ================= NEW HERO ================= */
+
+.hero-section {
+  width: 100%;
+}
+
+.hero-slide {
+  position: relative;
+  width: 100%;
+  height: 85vh;
+  overflow: hidden;
+}
+
+/* IMAGE */
+.hero-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* DARK OVERLAY */
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  z-index: 1;
+}
+
+/* TEXT CONTENT */
+.hero-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  text-align: center;
+  color: #fff;
+  z-index: 2;
+  width: 90%;
+}
+
+.hero-content h1 {
+  font-size: 52px;
+  font-weight: 700;
+}
+
+.hero-content p {
+  font-size: 18px;
+  margin-top: 10px;
+}
+
+/* BUTTON */
+.hero-btn {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 10px 25px;
+  background: #1e3990;
+  color: #fff;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 768px) {
+
+  .hero-slide {
+    height: 60vh;
+  }
+
+  .hero-content h1 {
+    font-size: 28px;
+  }
+
+  .hero-content p {
+    font-size: 14px;
+  }
+
+}
