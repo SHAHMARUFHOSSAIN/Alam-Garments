@@ -1,6 +1,6 @@
 {
-  "steps": {
-    "build": [
+  "build": {
+    "steps": [
       "install-php-extensions intl zip",
       "composer install --optimize-autoloader --no-interaction",
       "npm install",
