@@ -17,7 +17,7 @@ use App\Livewire\ConcernPage;
 use App\Livewire\JobManage;
 use App\Livewire\CareerManage;
 use App\Livewire\AdminDashboard;
-use App\Livewire\privacy;
+use App\Livewire\Privacy;
 
 /*
 |--------------------------------------------------------------------------
@@ -62,7 +62,7 @@ Route::get('/contact', ContactPage::class)->name('contact');
 
 Route::get('/concern/{slug}', ConcernPage::class)->name('concern.page');
 
-Route::get('/privacy', privacy::class)->name('privacy');
+Route::get('/privacy', Privacy::class)->name('privacy');
 /*
 |--------------------------------------------------------------------------
 | AUTH ROUTES
